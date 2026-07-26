@@ -1,5 +1,31 @@
 # ZSync
 
+ZSync stands for **Zippy Synchronisation**. It is a small, independent Java command-line application for keeping two local directories synchronised.
+
+## Installing the command
+
+Build or obtain `zsync.jar`, then run:
+
+```sh
+java -jar zsync.jar --install
+```
+
+The installer copies the JAR to a stable per-user application directory and creates a `zsync` command in the first suitable writable directory already on `PATH`. On Windows it creates `zsync.cmd`.
+
+Default application-data locations are:
+
+- macOS: `~/Library/Application Support/ZSync/zsync.jar`
+- Linux: `~/.local/share/zsync/zsync.jar`
+- Windows: `%LOCALAPPDATA%\ZSync\zsync.jar`
+
+The installer does not require administrator privileges. If no writable command directory exists on `PATH`, it explains that a user-writable bin directory must be added first.
+
+After installation, open a new terminal and run:
+
+```sh
+zsync --help
+```
+
 ZSync, or ZippySync, is a small, dependency-free Java 11 command-line directory synchroniser.
 It recursively copies new and changed files from a source directory into a
 destination directory while retaining destination-only files by default.

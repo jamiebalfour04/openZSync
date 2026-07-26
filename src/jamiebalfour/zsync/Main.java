@@ -40,6 +40,16 @@ public final class Main {
    *     3 when the operation cannot be started
    */
   static int run(String[] arguments) {
+    if (arguments.length == 1 && "--install".equals(arguments[0])) {
+      try {
+        ZSyncInstaller.install();
+        return 0;
+      } catch (IOException exception) {
+        System.err.println("zsync: installation failed: " + exception.getMessage());
+        return 3;
+      }
+    }
+
     SynchronisationOptions options = new SynchronisationOptions();
     List<String> paths = new ArrayList<>();
 
@@ -157,11 +167,12 @@ public final class Main {
     System.out.println("Destination-only files are retained unless --delete is supplied.");
     System.out.println();
     System.out.println("Options:");
-    System.out.println("  -n, --dry-run        Preview changes without modifying files");
-    System.out.println("      --verify         Compare equal-sized files using SHA-256");
-    System.out.println("      --delete         Delete destination-only files and directories");
-    System.out.println("      --exclude GLOB   Exclude a relative path pattern; repeatable");
-    System.out.println("  -v, --verbose        List every action");
-    System.out.println("  -h, --help           Show this help");
+    System.out.println("  --install        Install the zsync command for the current user");
+    System.out.println("  --dry-run        Preview changes without modifying files");
+    System.out.println("  --verify         Compare equal-sized files using SHA-256");
+    System.out.println("  --delete         Delete destination-only files and directories");
+    System.out.println("  --exclude GLOB   Exclude a relative path pattern; repeatable");
+    System.out.println("  --verbose        List every action");
+    System.out.println("  --help           Show this help");
   }
 }
