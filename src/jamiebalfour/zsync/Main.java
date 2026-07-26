@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * Command-line frontend for the reusable {@link DirectorySynchroniser}.
+ * Command-line frontend for the reusable {@link openZSync}.
  *
  * <p>This class is deliberately limited to parsing arguments, displaying
  * results, and translating outcomes into process exit codes. All filesystem
@@ -27,6 +27,9 @@ public final class Main {
    * @param arguments options followed by source and destination paths
    */
   public static void main(String[] arguments) {
+    System.out.println();
+    System.out.println("Welcome to openZSync " + openZSync.getVersion());
+    System.out.println();
     System.exit(run(arguments));
   }
 
@@ -100,7 +103,7 @@ public final class Main {
     }
 
     try {
-      SynchronisationResult result = DirectorySynchroniser.synchronise(source, destination, options);
+      SynchronisationResult result = openZSync.synchronise(source, destination, options);
       printResult(result, options);
       return result.isSuccessful() ? 0 : 1;
     } catch (IOException | IllegalArgumentException exception) {
@@ -175,4 +178,5 @@ public final class Main {
     System.out.println("  --verbose        List every action");
     System.out.println("  --help           Show this help");
   }
+
 }
