@@ -31,9 +31,9 @@ import java.util.UUID;
  * first copied to a temporary sibling and then moved into place so a failed
  * transfer does not leave a partially-written destination file.</p>
  */
-public final class openZSync {
+public final class ZSync {
   /** Static utility class; instances carry no state and are unnecessary. */
-  private openZSync() {
+  private ZSync() {
   }
 
   public static String getVersion() {
